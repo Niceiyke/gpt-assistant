@@ -6,15 +6,13 @@ export function activate(context: vscode.ExtensionContext) {
     // Access the settings
     const config = vscode.workspace.getConfiguration('gptAssistant');
     const apiKey = config.get<string>('apiKey');
-    const model = config.get<string>('apiEndpoint');
 
     if (!apiKey) {
         vscode.window.showErrorMessage('API key is not set. Please configure the GPT Assistant API key.');
         return;
     }
 
-    vscode.window.showInformationMessage(`API Key: ${apiKey}`);
-    const groqService = new GroqGPTService(apiKey,model);
+    const groqService = new GroqGPTService();
 
   context.subscriptions.push(
     vscode.commands.registerCommand("gpt=assistant.refactorCode", async () => {
@@ -92,7 +90,7 @@ export function activate(context: vscode.ExtensionContext) {
             vscode.commands.registerCommand("gpt=assistant.askQuestion", async () => {
               
                 const userInput = await vscode.window.showInputBox({
-                    placeHolder: "Type ask question",
+                    placeHolder: "Ask your question",
                     prompt: "Please enter your input",
                     validateInput: (text) => {
                         return text.trim().length === 0 ? "Input cannot be empty" : null;

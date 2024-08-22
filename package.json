@@ -18,7 +18,7 @@
       "properties": {
         "gptAssistant.apiKey": {
           "type": "string",
-          "default": "",
+          "default": "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",
           "description": "API key for GPT Assistant",
           "scope": "global"
         },
@@ -75,10 +75,6 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "groq-sdk": "^0.5.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "groq-sdk": "^0.5.0"
   }
 }
