@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+	  "moduleResolution": "nodenext", // Update to handle newer Node.js modules
+	  "module": "NodeNext",
+	  "target": "es6",
+	  "jsx": "react",
+	  "outDir": "./out",     // Specify the output directory for compiled JavaScript
+    "rootDir": "./src",
+	  "lib": ["dom", "es6"],
+	  "esModuleInterop": true,
+	  "strict": true,
+	}
+  }
+  
