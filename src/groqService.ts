@@ -93,7 +93,7 @@ class GroqGPTService {
               messages: [
                 {
                   role: "system",
-                  content: `your a helpfull coding assistant`,
+                  content: `your a helpful coding assistant`,
                 },
                 {
                   role: "user",

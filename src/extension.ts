@@ -3,7 +3,6 @@ import { getWebviewContent } from "./webview";
 import GroqGPTService from "./groqService";
 
 export function activate(context: vscode.ExtensionContext) {
-    // Access the settings
     const config = vscode.workspace.getConfiguration('gptAssistant');
     const apiKey = config.get<string>('apiKey');
 
@@ -113,9 +112,6 @@ export function activate(context: vscode.ExtensionContext) {
                 } else {
                     vscode.window.showErrorMessage('No input provided!');
                 }
-              
-        
-
         
               
             }));

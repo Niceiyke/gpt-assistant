@@ -1,6 +1,6 @@
 # gpt-assistant README
 
-This is the README for your extension "gpt-assistant". After writing up a brief description, we recommend including the following sections.
+gpt assistant is a code assistant, to help you become a better developer 
 
 ## Features
 

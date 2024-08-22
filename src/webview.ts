@@ -1,6 +1,5 @@
-import * as vscode from 'vscode';
 
-export function getWebviewContent(refactoredCode: string): string {
+export function getWebviewContent(code: string): string {
   return `
       <!DOCTYPE html>
       <html lang="en">
@@ -15,6 +14,7 @@ export function getWebviewContent(refactoredCode: string): string {
                   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                   margin: 0;
                   padding: 20px;
+                  min-width: 760px;
               }
               pre {
                     white-space: pre-wrap;
@@ -55,7 +55,7 @@ export function getWebviewContent(refactoredCode: string): string {
       </head>
         <body>
             <h1>Refactored Code</h1>
-            <pre id="code-block"><code class="language-python">${refactoredCode.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+            <pre id="code-block"><code class="language-python">${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
             <button id="copy-btn"><i class="fas fa-copy"></i> Copy Code</button>
             <div id="toast" class="toast">Code copied to clipboard!</div>
 
@@ -92,11 +92,3 @@ export function getWebviewContent(refactoredCode: string): string {
 }
 
 
-function getNonce() {
-    let text = '';
-    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (let i = 0; i < 32; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return text;
-}
