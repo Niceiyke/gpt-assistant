@@ -91,4 +91,69 @@ export function getWebviewContent(code: string): string {
   `;
 }
 
+export function getWebviewChatContent() {
+    return `
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>ChatBot</title>
+          <style>
+              body {
+                  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                  padding: 20px;
+              }
+              #chatbox {
+                  width: 100%;
+                  height: 300px;
+                  overflow-y: scroll;
+                  border: 1px solid #ddd;
+                  padding: 10px;
+              }
+              #userInput {
+                  width: 80%;
+              }
+          </style>
+      </head>
+      <body>
+          <h1>ChatBot Interface</h1>
+          <div id="chatbox"></div>
+          <input type="text" id="userInput" placeholder="Ask me something..." />
+          <button id="sendBtn">Send</button>
+
+          <script>
+              const vscode = acquireVsCodeApi();
+
+              const chatbox = document.getElementById('chatbox');
+              const userInput = document.getElementById('userInput');
+              const sendBtn = document.getElementById('sendBtn');
+
+              sendBtn.addEventListener('click', () => {
+                  const message = userInput.value;
+                  chatbox.innerHTML += '<div><strong>You:</strong> ' + message + '</div>';
+                  userInput.value = '';
+
+                  // Send the message to VSCode extension backend
+                  vscode.postMessage({
+                      command: 'chatInput',
+                      text: message
+                  });
+              });
+
+              // Handle messages from VSCode backend
+              window.addEventListener('message', (event) => {
+                  const message = event.data;
+                  if (message.command === 'chatResponse') {
+                      chatbox.innerHTML += '<div><strong>Bot:</strong> ' + message.text + '</div>';
+                      chatbox.scrollTop = chatbox.scrollHeight;
+                  }
+              });
+          </script>
+      </body>
+      </html>
+    `;
+}
+
+
 

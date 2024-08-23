@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
-import { getWebviewContent } from "./webview";
+import { getWebviewContent,getWebviewChatContent } from "./webview";
 import GroqGPTService from "./groqService";
+import { handleChatInput } from "./chatService";
 
 export function activate(context: vscode.ExtensionContext) {
     const config = vscode.workspace.getConfiguration('gptAssistant');
@@ -85,7 +86,7 @@ export function activate(context: vscode.ExtensionContext) {
             Documentationpanel.webview.html = getWebviewContent(newFeatures);
           }
         }));
-        context.subscriptions.push(
+    context.subscriptions.push(
             vscode.commands.registerCommand("gpt=assistant.askQuestion", async () => {
               
                 const userInput = await vscode.window.showInputBox({
@@ -115,6 +116,32 @@ export function activate(context: vscode.ExtensionContext) {
         
               
             }));
+      context.subscriptions.push(
+              vscode.commands.registerCommand('gpt=assistant.chatbot', () => {
+                  const panel = vscode.window.createWebviewPanel(
+                      'chatBot', // Identifies the type of the webview
+                      'ChatBot', // Title of the panel
+                      vscode.ViewColumn.Beside, // Editor column to show the new webview panel in
+                      {
+                          enableScripts: true, // Enable JS in the WebView
+                      }
+                  );
+      
+                  panel.webview.html = getWebviewChatContent(); // Render WebView content
+      
+                  // Listen for messages from the WebView
+                  panel.webview.onDidReceiveMessage(async (message) => {
+                      if (message.command === 'chatInput') {
+                          const userInput = message.text;
+                          const response = await handleChatInput(userInput);
+      
+                          panel.webview.postMessage({ command: 'chatResponse', text: response });
+                      }
+                  });
+              })
+          );
+      
+
 }
 
 export function deactivate() {}

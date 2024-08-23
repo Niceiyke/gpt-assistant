@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
-	  "moduleResolution": "nodenext", // Update to handle newer Node.js modules
-	  "module": "NodeNext",
+	  "moduleResolution": "Node", // Update to handle newer Node.js modules
+	  "module": "CommonJS",
 	  "target": "es6",
 	  "jsx": "react",
 	  "outDir": "./out",     // Specify the output directory for compiled JavaScript
@@ -9,6 +9,8 @@
 	  "lib": ["dom", "es6"],
 	  "esModuleInterop": true,
 	  "strict": true,
+	  "types": ["node"]  ,
+    "skipLibCheck": true,
 	}
   }
   
