@@ -2,9 +2,12 @@ import { ChatGroq } from "@langchain/groq";
 import { BufferMemory, } from "langchain/memory";
 import { ConversationChain} from "langchain/chains";
 
+import * as vscode from "vscode";
+// Fetching the API key and model from VS Code settings
+const groqConfig = vscode.workspace.getConfiguration('gptAssistant');
+const apiKey = groqConfig.get<string>('apiKey','');
+const model = groqConfig.get<string>('model', 'llama3-8b-8192');
 
-// OpenAI setup
-const OPENAI_API_KEY = "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";
 
 // In-memory storage for conversation history
 const memory = new BufferMemory();
@@ -13,7 +16,8 @@ const memory = new BufferMemory();
 export async function handleChatInput(userInput: string): Promise<string> {
 
     const chatBot = new ChatGroq({
-        apiKey: OPENAI_API_KEY,
+        apiKey: apiKey,
+        model:model,
       
     });
 

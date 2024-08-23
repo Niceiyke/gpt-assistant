@@ -112,9 +112,9 @@ export function getWebviewChatContent() {
                   height: 100vh;
               }
               #chat-container {
-                  width: 400px;
+                  width: 600px;
                   height: 600px;
-                  background-color: #ddd;
+                  background-color: #fff;
                   border-radius: 8px;
                   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                   display: flex;
@@ -126,7 +126,7 @@ export function getWebviewChatContent() {
                   padding: 20px;
                   overflow-y: auto;
                   border-bottom: 1px solid #eee;
-                  background-color: #000;
+                  background-color: ##071720;
               }
               #userInputContainer {
                   display: flex;
@@ -162,12 +162,12 @@ export function getWebviewChatContent() {
                   margin-bottom: 5px;
               }
               .message .bot-message {
-                  background-color: #111;
+                  background-color: #252728;
                   padding: 10px;
                   border-radius: 5px;
               }
               .message .user-message {
-                  background-color: #111;
+                  background-color: #252728;
                   padding: 10px;
                   border-radius: 5px;
                   text-align: right;
