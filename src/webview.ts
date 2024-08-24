@@ -114,7 +114,7 @@ export function getWebviewChatContent() {
               #chat-container {
                   width: 600px;
                   height: 600px;
-                  background-color: #fff;
+                  background-color: #e6e6e6;
                   border-radius: 8px;
                   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                   display: flex;
@@ -126,7 +126,7 @@ export function getWebviewChatContent() {
                   padding: 20px;
                   overflow-y: auto;
                   border-bottom: 1px solid #eee;
-                  background-color: ##071720;
+                  background-color: #071720;
               }
               #userInputContainer {
                   display: flex;
@@ -174,7 +174,7 @@ export function getWebviewChatContent() {
               }
               /* Code block styles */
               pre {
-                  background-color: #000;
+                  background-color:  #000033;
                   color: #ffffff;
                   padding: 10px;
                   border-radius: 5px;

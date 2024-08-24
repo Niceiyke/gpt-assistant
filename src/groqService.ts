@@ -6,9 +6,6 @@ const apiKey = groqConfig.get<string>('apiKey','');
 const model = groqConfig.get<string>('model', 'llama3-8b-8192');
 
 
-vscode.window.showInformationMessage(`API Key: ${apiKey}`);
-
-
 // Initialize Groq SDK with the API key
 const groq = new Groq({ apiKey });
 

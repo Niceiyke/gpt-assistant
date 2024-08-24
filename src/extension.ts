@@ -119,17 +119,18 @@ export function activate(context: vscode.ExtensionContext) {
       context.subscriptions.push(
               vscode.commands.registerCommand('gpt=assistant.chatbot', () => {
                   const panel = vscode.window.createWebviewPanel(
-                      'chatBot', // Identifies the type of the webview
-                      'ChatBot', // Title of the panel
-                      vscode.ViewColumn.Beside, // Editor column to show the new webview panel in
+                      'chatBot', 
+                      'ChatBot', 
+                      vscode.ViewColumn.Beside, 
                       {
-                          enableScripts: true, // Enable JS in the WebView
+                          enableScripts: true,
+                          retainContextWhenHidden:true
                       }
                   );
       
-                  panel.webview.html = getWebviewChatContent(); // Render WebView content
+                  panel.webview.html = getWebviewChatContent();
       
-                  // Listen for messages from the WebView
+                  
                   panel.webview.onDidReceiveMessage(async (message) => {
                       if (message.command === 'chatInput') {
                           const userInput = message.text;
