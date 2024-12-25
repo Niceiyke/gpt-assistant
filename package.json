@@ -24,7 +24,7 @@
       "properties": {
         "gptAssistant.apiKey": {
           "type": "string",
-          "default": "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",
+          "default": "",
           "description": "API key for GPT Assistant",
           "scope": "global"
         },

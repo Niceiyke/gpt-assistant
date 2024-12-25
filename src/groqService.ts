@@ -2,7 +2,7 @@ import Groq from "groq-sdk";
 import * as vscode from "vscode";
 // Fetching the API key and model from VS Code settings
 const groqConfig = vscode.workspace.getConfiguration('gptAssistant');
-const apiKey = groqConfig.get<string>('apiKey','');
+const apiKey = groqConfig.get<string>('apiKey','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');
 const model = groqConfig.get<string>('model', 'llama3-8b-8192');
 
 
@@ -72,7 +72,7 @@ class GroqGPTService {
           let chatCompletion=await groq.chat.completions.create({
             messages: [
               {
-                role: "system",
+                role: "system",      
                 content: `study this ${lang} code and suggest extra features that might be useful in this context. return the code implementation. `,
               },
               {

@@ -1,0 +1,6 @@
+how to run
+get Api groq and edd to .env file
+
+run vsce package 
+
+re install the vsix package
