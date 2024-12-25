@@ -24,13 +24,13 @@
       "properties": {
         "gptAssistant.apiKey": {
           "type": "string",
-          "default": "",
+          "default": "xai-3QDwulmNXJaa2oja9GZAspoqNb8qhVR8ELbeohpzDgis8mrkXRIJtf7iEbKLcxXh1PpxvyjKDkjZrcjp",
           "description": "API key for GPT Assistant",
           "scope": "global"
         },
         "gptAssistant.model": {
           "type": "string",
-          "default": "llama3-8b-8192",
+          "default": "grok-2-1212",
           "description": "Model GPT Assistant API",
           "scope": "global"
         }
@@ -86,8 +86,7 @@
   },
   "dependencies": {
     "@langchain/groq": "^0.0.17",
-    "groq-sdk": "^0.5.0"
-
-
+    "groq-sdk": "^0.5.0",
+    "langchain": "^0.3.8"
   }
 }
